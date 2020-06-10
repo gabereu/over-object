@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --declaration",
-    "dev": "nodemon --watch \"src//\" --exec \"ts-node src/samples.ts\" -e ts"
+    "dev": "nodemon --watch \"src/\" --exec \"ts-node src/samples.ts\" -e ts"
   },
   "devDependencies": {
     "@types/node": "^14.0.12",
