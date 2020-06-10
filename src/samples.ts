@@ -1,13 +1,21 @@
-import over from './index';
+import over from './index'
 
-const data = {
-    data1: 'A string',
-    data2: [1,2,3],
-    data3: {
-        value: 10
-    }
-}
+const object = { Hello: 'World' }
 
-over(data).forEach((value, key) => {
-    console.log(key + ': ' + value);
-})
+over(object).forEach((value, key) => {console.log(key + ' ' + value)}); // Hello World
+
+const mapped = over(object).map((value) => value + ' and Universe')
+
+console.log(mapped); // { Hello: 'World and Universe' }
+
+const object2 = { Hello: 'World', and: 'Universe' }
+
+const filtered = over(object2).filter((_value, key) => key === 'and')
+
+console.log(filtered) // { and: 'Universe' }
+
+const finded = over(object2).filter((value) => value === 'World')
+
+console.log(finded);// 'World'
+
+over(object).map((value) => value + ' and Universe').forEach((value, key) => {console.log(key + ' ' + value)}) // 'Hello World and Universe'

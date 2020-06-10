@@ -12,7 +12,7 @@ export interface Over {
 }
 
 export default function over (object:Object) : Over{
-    const overFrom = object;
+    const overFrom = {...object};
 
     Object.defineProperty(overFrom, 'forEach', {
         value: function (callback: {(value: any, key: String): void}) {
