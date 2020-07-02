@@ -19,3 +19,18 @@ const finded = over(object2).filter((value) => value === 'World')
 console.log(finded);// 'World'
 
 over(object).map((value) => value + ' and Universe').forEach((value, key) => {console.log(key + ' ' + value)}) // 'Hello World and Universe'
+
+const complexObject = {
+    first: {
+        second: 10,
+        third: {
+            fourth: [1,2,3,4,5]
+        }
+    }
+}
+
+const second = over(complexObject).get('first.second');
+const fourth_2 = over(complexObject).get('first.third.fourth[2]');
+
+console.log(second);
+console.log(fourth_2);

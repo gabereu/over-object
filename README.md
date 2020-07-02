@@ -72,5 +72,23 @@ The function adds useful functions to the property of the object passed in the p
     over(object).map((value, key) => value + 'and Universe').forEach((value, key) => {console.log(key + ' ' + value)}) // 'Hello World and Universe'
     ``` 
 
+- get
+    ```js
+    import over from 'over-object';
+
+    const complexObject = {
+        first: {
+            second: 'Hello',
+            third: {
+                fourth: [1,2,3,4,5]
+            }
+        }
+    }
+
+    over(complexObject).get('first.second'); // Hello
+    
+    over(complexObject).get('first.third.fourth[2]'); // 3
+    ```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
