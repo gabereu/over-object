@@ -1,17 +1,17 @@
 {
   "name": "over-object",
   "version": "1.0.0",
-  "main" : "dist/index.js",
-  "types" : "dist/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "build": "tsc --declaration",
-    "dev": "nodemon --watch \"src/\" --exec \"ts-node src/samples.ts\" -e ts"
+    "dev": "ts-node-dev --respawn --transpileOnly --ignore-watch node_modules --no-notify src/samples.ts"
   },
   "devDependencies": {
     "@types/node": "^14.0.12",
-    "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.50",
     "typescript": "^3.9.5"
   }
 }
