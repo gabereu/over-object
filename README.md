@@ -90,5 +90,16 @@ The function adds useful functions to the property of the object passed in the p
     over(complexObject).get('first.third.fourth[2]'); // 3
     ```
 
+- reduce
+    ```js
+    import over from 'over-object';
+
+    const object = { Hello: 'World', and: 'Universe' }
+
+    const reduced = over(object).reduce((previous, value, key)=>`${previous}${key} ${value} `, '');
+
+    console.log(reduced);// 'Hello World and Universe'
+    ```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

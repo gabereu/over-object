@@ -34,3 +34,6 @@ const fourth_2 = over(complexObject).get('first.third.fourth[2]');
 
 console.log(second);
 console.log(fourth_2);
+
+const string = over(object2).reduce((previous, value, key)=>`${previous}${key} ${value} `, '');
+console.log(string);

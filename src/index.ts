@@ -3,12 +3,13 @@ interface Indexable {
 }
 
 interface Over {
-    forEach: (callback: {(value: any, key: String): void}) => any;
-    map: (callback: {(value: any, key: String): any}) => Over;
-    filter: (callback: {(value: any, key: String): Boolean}) => Over;
-    find: (callback: {(value: any, key: String): Boolean}) => any;
-    get: (path: String) => any;
-    imprime: () => void;
+    forEach(callback: {(value: any, key: String): void}): any;
+    map(callback: {(value: any, key: String): any}): Over;
+    reduce<T>(callback: {(previousValue: T, value: any, key: String): T}, initialValue: T ): T;
+    reduce(callback: {(previousValue: any, value: any, key: String): any}, initialValue: any ): any;
+    filter(callback: {(value: any, key: String): Boolean}): Over;
+    find(callback: {(value: any, key: String): Boolean}): any;
+    get(path: String): any;
     [key: string]: any;
 }
 
@@ -85,6 +86,17 @@ export default function over (object:Object) : Over{
     Object.defineProperty(overFrom, 'get', {
         value: function (path: String) {
             return objectGetByPath(path, this);
+        },
+        writable: false
+    });
+
+    Object.defineProperty(overFrom, 'reduce', {
+        value: function (callback: {(previousValue: any, value: any, key: String): void}, initialValue: any) {
+            let reduced = initialValue;
+            for (const [key, value] of Object.entries(this)) {
+                reduced = callback(reduced, value, key);
+            }
+            return reduced;
         },
         writable: false
     });
